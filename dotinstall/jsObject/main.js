@@ -1,29 +1,6 @@
 'use strict';
 
 {
-class SponsorePost {
-  constructor(text, sponsor) {
-    this.text = text
-    this.likeCount = 0
-  }
-
-  show() {
-    console.log(`${this.text} - ${this.likeCount}likes`)
-    console.log(`...suponserd by ${this.sponsor}`)
-  }
-
-  like(){
-    this.likeCount++;
-    this.show();
-  }
-
-  //静的メゾッド
-  //thisは使えない
-  static showInfo() {
-    console.log('post ckass version 1');
-  }
-}
-
 class Post {
   constructor(text) {
     this.text = text
@@ -45,6 +22,20 @@ class Post {
     console.log('post ckass version 1');
   }
 }
+
+class SponsorePost extends Post{
+  constructor(text, sponsor) {
+    super(text);
+    this.sponsor = sponsor
+  }
+
+  show() {
+    super.show();
+    console.log(`...suponserd by ${this.sponsor}`)
+  }
+}
+
+
 
 const posts = [
   new Post('LOVE JS'),
