@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <h1>bitcoin</h1>
+
+      <section v-if="hasError" v-cloak>Errors</section>
+      <section v-else>
+        <div v-if="loading">Loading...</div>
+        <div v-else>
+          <!-- https://jp.vuejs.org/v2/api/index.html#v-cloak -->
+          <ul v-cloak>
+            <li v-for="(rate, currency) in bpi">
+              {{currency}} : {{rate.rate_float | currencyDecimal}}
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
