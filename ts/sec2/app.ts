@@ -12,25 +12,45 @@
 // }
 
 // 型推論が効いている
-const person: {
-  name: string,
-  age: number,
-  hobbies: string[],
-  // tuble型要素の長さと、方を決める
-  role: [number, string]
-} = {
+// const person: {
+//   name: string,
+//   age: number,
+//   hobbies: string[],
+//   // tuble型要素の長さと、方を決める
+//   role: [number, string]
+//   // Enum 定数の集合の一覧に名前をつける
+// } = {
+//   age: 30,
+//   name: 'test',
+//   hobbies: ['sports', 'cooking'],
+//   role: [2, 'author']
+// }
+
+// enumで管理することができる
+// const ADIMIN = 0;
+// const READ_ONLY = 1;
+// const AUTHORS = 2;
+
+enum Role {
+  ADIMIN,
+  READ_ONLY,
+  AUTHORS,
+};
+
+const person = {
   age: 30,
   name: 'test',
   hobbies: ['sports', 'cooking'],
-  role: [2, 'author']
+  role: Role.ADIMIN,
 }
+
 
 //  tupleはpushを許可してしまうが、変数の再代入は検知できる
 // person.role.push('admin');
 // person.role = [0, 'adomin', 'user'];
 
-let favoriteActivity: string[];
-favoriteActivity = ['hoge']
+// let favoriteActivity: string[];
+// favoriteActivity = ['hoge']
 
 console.log(person.name)
 
@@ -39,4 +59,8 @@ for (const hobby of person.hobbies) {
   // メソッドは以外は使用できない map()はArray
   console.log(hobby.toUpperCase());
   // console.log(hobby.map());
+}
+
+if (person.role === Role.ADIMIN) {
+  console.log("管理者User")
 }
