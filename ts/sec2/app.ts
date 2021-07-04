@@ -31,3 +31,21 @@ addAndHandle(10, 20, (result) => {
 
 console.log(combinValue(8,8));
 printNumber(add(5,12))
+
+// any unkouwnの違い
+// any は型チェックをしない宣言
+// unkownは型が何になるかが不明な宣言
+
+let test: unknown;
+let hoge: string;
+
+test = "hoge"
+hoge = "hoge"
+
+// 型定義を行っているものへの際代入はできなくなるので、可能であればunkouwnを使用する
+// Type 'unknown' is not assignable to type 'string'
+// hoge = test
+
+// never voidの違い
+// voidはretrunを返さない宣言
+// neverは値を返さないことを明示する //無限ループとかエラー関数とか途中で関数がクラッシュする場合
