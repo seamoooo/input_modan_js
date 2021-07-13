@@ -1,4 +1,4 @@
-function add(n1: number, n2: number): number {
+function ad(n1: number, n2: number): number {
   return n1 + n2;
 }
 
@@ -12,25 +12,25 @@ function printNumber(number: number):void {
 // 戻り値と引数にアロー関数形式で指定する
 let combinValue: (a: number, b: number) => number;
 
-combinValue = add
+combinValue = ad
 // エラーになる
 // combinValue = printNumber
 
 // コールバック関数側で関数の定義を行っている
 // コールバックのvoid側は返り値の値を利用しないことで、
 // 渡される関数が引数を利用しないという意味ではない
-function addAndHandle ( n1: number, n2: number, cb:(num:number) => void) {
+function adAndHandle ( n1: number, n2: number, cb:(num:number) => void) {
   const result = n1 + n2;
   cb(result);
 }
 
-addAndHandle(10, 20, (result) => {
+adAndHandle(10, 20, (result) => {
   console.log(result);
   return result;
 })
 
 console.log(combinValue(8,8));
-printNumber(add(5,12))
+printNumber(ad(5,12))
 
 // any unkouwnの違い
 // any は型チェックをしない宣言
