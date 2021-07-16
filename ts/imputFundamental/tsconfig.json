@@ -2,19 +2,19 @@
   "compilerOptions": {
     "target": "ES6",                          /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */
     "module": "commonjs",                     /*　モジュールの設定*/
-    "lib": ["DOM", "ES6", "DOM.Iterable", "ScriptHost"],  /* デフォルトはtargetの設定によってよしなに設定してくれている
+    "lib": ["DOM", "ES6", "DOM.Iterable", "ScriptHost"],  /* デフォルトはtargetの設定によってよしなに設定してくれている */
     // "sourceMap": true,                     /* 開発者モードでプラウザで表示可能なTSファイルも生成してくれる */
     // "outFile": "./",                       /* Concatenate and emit output to single file. */
     "outDir": "./dist",                        /* コンパイルしたJSの出力先 */
     "rootDir": "./src",                       /* root directoryの設定この外にTSファイルがあるとエラーが発生する */
     "removeComments": true,                /* コメントを削除する */
     // "noEmit": true,                        /* JSを作成しないようにする */
-    // "isolatedModules": true,               /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */
+    "noEmitOnError": true,                    /* エラーがあってもJSが作成されない*/
 
     /* Strict Type-Checking Options */
-    // "strict": true,                           /* 開発者モードでプラウザで表示可能なTSファイルも生成してくれる */
-    // "noImplicitAny": true,                 /* Raise error on expressions and declarations with an implied 'any' type. */
-    // "strictNullChecks": true,              /* Enable strict null checks. */
+    "strict": true,                           /* TSの厳格型チェック 下のstrict系が有効になる */
+    // "noImpli/citAny": true,                /* 暗黙のanyを許可しない  */
+    // "strictNullChecks": true,              /* nullの可能性がある場合、エラーが出る */
     // "strictFunctionTypes": true,           /* Enable strict checking of function types. */
     // "strictBindCallApply": true,           /* Enable strict 'bind', 'call', and 'apply' methods on functions. */
     // "strictPropertyInitialization": true,  /* Enable strict checking of property initialization in classes. */
@@ -22,9 +22,10 @@
     // "alwaysStrict": true,                  /* Parse in strict mode and emit "use strict" for each source file. */
 
     /* Additional Checks */
-    // "noUnusedLocals": true,                /* Report errors on unused locals. */
-    // "noUnusedParameters": true,            /* Report errors on unused parameters. */
-    // "noImplicitReturns": true,             /* Report error when not all code paths in function return a value. */
+    /* この3つは品質を担保する */
+    "noUnusedLocals": true,                /* 利用されていないローカル変数は許さない　グローバルはOk */
+    "noUnusedParameters": true,            /* パラメーターを使用していない場合はエラー*/
+    "noImplicitReturns": true,             /* 分岐処理でreturn文がないとエラーになる。*/
     // "noFallthroughCasesInSwitch": true,    /* Report errors for fallthrough cases in switch statement. */
 
     /* Module Resolution Options */
@@ -45,12 +46,12 @@
     // "inlineSourceMap": true,               /* Emit a single file with source maps instead of having a separate file. */
     // "inlineSources": true,                 /* Emit the source alongside the sourcemaps within a single file; requires '--inlineSourceMap' or '--sourceMap' to be set. */
 
-    /* Experimental Options */
+    /* 実験的な機能達 */
     // "experimentalDecorators": true,        /* Enables experimental support for ES7 decorators. */
     // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
 
     /* Advanced Options */
-    "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */
+    "forceConsistentCasingInFileNames": true  /* ファイルの大文字小文字を確認 */
   },
   "exclude": ["node_modules"], //default 除外
   "include": ["src/app.ts", "src/analytics.ts"],　// 含める
