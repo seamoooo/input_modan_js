@@ -6,20 +6,34 @@ class Department {
         this.id = id;
         this.employees = employees;
     }
-    discribe() {
-        console.log('Department' + this.name + this.id);
-    }
     addEmployee(employee) {
         this.employees.push(employee);
     }
     printEnp() {
         console.log(this.employees);
     }
+    static createEmployee(name) {
+        return { name: name };
+    }
 }
 class ITDepartment extends Department {
-    constructor(id, adomin) {
+    constructor(id, adomin, lastReport) {
         super('IT', id, ['従業員']);
         this.adomin = adomin;
+        this.lastReport = lastReport;
+    }
+    get mostRecentlyReport() {
+        if (!this.lastReport)
+            return 'no report';
+        return this.lastReport;
+    }
+    set mostRecentlyReport(val) {
+        if (!val)
+            return;
+        this.addReport(val);
+    }
+    discribe() {
+        console.log('ほげ' + this.id);
     }
     addEmployeed(name) {
         if (name === 'Max') {
@@ -27,8 +41,11 @@ class ITDepartment extends Department {
         }
         this.employees.push(name);
     }
+    addReport(text) {
+        this.lastReport = text;
+    }
 }
-const account = new Department('account', 13, ['部長', '営業', '5年目']);
+const account = new ITDepartment(20, ['部長', '営業', '5年目'], 'hogehogereport');
 account.addEmployee('max');
 account.addEmployee('maxes');
 account.discribe();
