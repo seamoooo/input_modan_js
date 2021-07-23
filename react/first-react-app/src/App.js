@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+// propsの型ちぇっくを行う
+import PropTypes from 'prop-types';
 
 // クラスコンポーネント
 // class App extends Component {
@@ -53,4 +55,8 @@ Cat.defaultProps = {
   age: 2,
 };
 
+Cat.propTypes = {
+  name: PropTypes.string,
+  age: PropTypes.number.isRequired,
+};
 export default App;
