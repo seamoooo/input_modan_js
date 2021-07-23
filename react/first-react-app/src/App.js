@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // propsの型ちぇっくを行う
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 // クラスコンポーネント
 // class App extends Component {
@@ -26,37 +26,74 @@ import PropTypes from 'prop-types';
 // }
 
 // 関数コンポーネント
-const App = () => {
-  const profiles = [
-    { name: 'tame', age: 10 },
-    { name: 'bin', age: 10 },
-    { name: 'ぶち' },
-  ];
-  return (
-    <div>
-      {profiles.map((profile, index) => {
-        // 要素を生成してしまうと 要素の監視が重複するのでwarningがでるので、要素にindexを与えて区別させる
-        return <Cat name={profile.name} age={profile.age} key={index} />;
-      })}
-    </div>
-  );
-};
+// const App = () => {
+//   const profiles = [
+//     { name: 'tame', age: 10 },
+//     { name: 'bin', age: 10 },
+//     { name: 'ぶち' },
+//   ];
+//   return (
+//     <div>
+//       {profiles.map((profile, index) => {
+//         // 要素を生成してしまうと 要素の監視が重複するのでwarningがでるので、要素にindexを与えて区別させる
+//         return <Cat name={profile.name} age={profile.age} key={index} />;
+//       })}
+//     </div>
+//   );
+// };
 
-const Cat = (props) => {
-  return (
-    <div>
-      {props.name} が しゃーーー {props.age}
-    </div>
-  );
-};
+// const Cat = (props) => {
+//   return (
+//     <div>
+//       {props.name} が しゃーーー {props.age}
+//     </div>
+//   );
+// };
 
-// propsのデフォルト値を設定することができる
-Cat.defaultProps = {
-  age: 2,
-};
+// // propsのデフォルト値を設定することができる
+// Cat.defaultProps = {
+//   age: 2,
+// };
 
-Cat.propTypes = {
-  name: PropTypes.string,
-  age: PropTypes.number.isRequired,
-};
+// Cat.propTypes = {
+//   name: PropTypes.string,
+//   age: PropTypes.number.isRequired,
+// };
+// export default App;
+
+// input state
+const App = () => <Counter></Counter>;
+
+class Counter extends Component {
+  constructor(props) {
+    // 初期化
+    super(props);
+    // vueでいうdataよりのvuex風味
+    this.state = { count: 0 };
+    console.log(this.state);
+  }
+
+  addCount = () => {
+    console.log(this.state.count);
+    // stateを更新する必ずsetState
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  revertCount = () => {
+    console.log(this.state.count);
+    // stateを更新する必ずsetState
+    this.setState({ count: this.state.count - 1 });
+  };
+
+  render() {
+    return (
+      <React.Fragment>
+        <div>{this.state.count}</div>
+        <button onClick={this.addCount}>+1</button>
+        <button onClick={this.revertCount}>-1</button>
+      </React.Fragment>
+    );
+  }
+}
+
 export default App;
