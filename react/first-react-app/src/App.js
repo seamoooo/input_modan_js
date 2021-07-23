@@ -25,17 +25,32 @@ import React, { Component } from 'react';
 
 // 関数コンポーネント
 const App = () => {
+  const profiles = [
+    { name: 'tame', age: 10 },
+    { name: 'bin', age: 10 },
+    { name: 'ぶち' },
+  ];
   return (
     <div>
-      <Cat />
-      <Cat />
-      <Cat />
+      {profiles.map((profile, index) => {
+        // 要素を生成してしまうと 要素の監視が重複するのでwarningがでるので、要素にindexを与えて区別させる
+        return <Cat name={profile.name} age={profile.age} key={index} />;
+      })}
     </div>
   );
 };
 
-const Cat = () => {
-  return <div>しゃーーー</div>;
+const Cat = (props) => {
+  return (
+    <div>
+      {props.name} が しゃーーー {props.age}
+    </div>
+  );
+};
+
+// propsのデフォルト値を設定することができる
+Cat.defaultProps = {
+  age: 2,
 };
 
 export default App;
