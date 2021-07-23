@@ -61,7 +61,46 @@ import React, { Component } from 'react';
 // };
 // export default App;
 
-// input state
+// // input state
+// const App = () => <Counter></Counter>;
+
+// // stateを使用したい場合はクラスコンポーネントでなければならない
+// // おそらく関数コンポーネントだと初期化処理ができないから
+// class Counter extends Component {
+//   constructor(props) {
+//     // 初期化
+//     super(props);
+//     // vueでいうdataよりのvuex風味
+//     this.state = { count: 0 };
+//     console.log(this.state);
+//   }
+
+//   addCount = () => {
+//     console.log(this.state.count);
+//     // stateを更新する必ずsetState
+//     this.setState({ count: this.state.count + 1 });
+//   };
+
+//   revertCount = () => {
+//     console.log(this.state.count);
+//     // stateを更新する必ずsetState
+//     this.setState({ count: this.state.count - 1 });
+//   };
+
+//   render() {
+//     return (
+//       <React.Fragment>
+//         <div>{this.state.count}</div>
+//         <button onClick={this.addCount}>+1</button>
+//         <button onClick={this.revertCount}>-1</button>
+//       </React.Fragment>
+//     );
+//   }
+// }
+
+// export default App;
+
+// input Redux
 const App = () => <Counter></Counter>;
 
 // stateを使用したい場合はクラスコンポーネントでなければならない
