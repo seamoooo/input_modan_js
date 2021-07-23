@@ -64,6 +64,8 @@ import React, { Component } from 'react';
 // input state
 const App = () => <Counter></Counter>;
 
+// stateを使用したい場合はクラスコンポーネントでなければならない
+// おそらく関数コンポーネントだと初期化処理ができないから
 class Counter extends Component {
   constructor(props) {
     // 初期化
