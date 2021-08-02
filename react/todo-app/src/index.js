@@ -1,23 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { createStore } from 'redux';
+import { createStore, applyMiddleware} from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducers';
 
-import App from './components/App';
+// ミドルウェアなので、適応する関数をreduxからimportする必要がある
+import thunk from 'redux-thunk'
+
+import EventsIndex from './components/events_index';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 
-const store = createStore(reducer);
+// 第2引数でthunkを読み込む
+const store = createStore(reducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <EventsIndex />
   </Provider>,
   document.getElementById('root')
 );
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+
 reportWebVitals();
