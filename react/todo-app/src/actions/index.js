@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
 export const READ_EVENTS = 'READ_EVENTS';
 
 // actionクリエーター
@@ -10,13 +10,12 @@ export const READ_EVENTS = 'READ_EVENTS';
 // 内部の関数はdipatchとgetStateをパラメータとして受け取ることができる
 
 // todoを返す練習用api
-const ROOT = 'https://udemy-utils.herokuapp.com/api/v1'
-const QUERY = '?token=token123'
+const ROOT = 'https://udemy-utils.herokuapp.com/api/v1';
+const QUERY = '?token=token123';
 
 export const readEvents = () => async (dispatch) => {
-    const res = await axios.get(`${ROOT}/events${QUERY}`)
-    console.log(res)
+  const res = await axios.get(`${ROOT}/events${QUERY}`);
 
-    // dispatchでrdsucerに渡す
-    dispatch({type: READ_EVENTS, res})
+  // dispatchでrdsucerに渡す
+  dispatch({ type: READ_EVENTS, res });
 };
