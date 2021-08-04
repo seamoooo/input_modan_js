@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import { Link } from 'react-router-dom';
 
 import { readEvents } from '../actions';
 
@@ -33,12 +34,15 @@ class EventsIndex extends Component {
           </thead>
           <tbody>{this.renderEvents()}</tbody>
         </table>
+
+        <Link to="/events/new">New Event</Link>
       </React.Fragment>
     );
   }
 }
 
 // reducerから値をpropsで受け取る
+// イベントに関する状態を描画する
 const mapStateToProps = (state) => ({
   events: state.events,
 });
@@ -49,6 +53,7 @@ const mapDispatchToProps = { readEvents };
 //   readEvents: () => dispatch(readEvents()),
 // });
 
+// *************** reduxのデータの流れ ***********
 //  0.connectでstateとdispath関数をEventsIndexにわたす
 //  1.mount時に、actionが作成される
 //  2.コールバック関数としてreadEventsを、dispathメソッドがreducerに渡す
